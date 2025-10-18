@@ -1,12 +1,55 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TravelExp.Models"
+             xmlns:vm="clr-namespace:TravelExp.ViewModels"
              x:Class="TravelExp.Pages.TripsPage"
-             Title="TripsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Trips"
+            x:DataType="vm:TripViewModel">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="plus.png" Command="{Binding AddTripTempCommand}"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+    
+    <CollectionView ItemsSource="{Binding Trips}" Margin="15">
+        <CollectionView.EmptyView>
+            <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,300,0,0">
+                <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
+                <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"
+              MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripTempCommand}"></Button>
+            </VerticalStackLayout>
+        </CollectionView.EmptyView>
+        <CollectionView.ItemsLayout>
+            <!--To maintain the gap between the items-->
+            <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"></LinearItemsLayout>
+        </CollectionView.ItemsLayout>
+        
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="model:TripModel">
+                <Border BackgroundColor="White" StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="10" >
+                    <!--Text items goes here-->
+                    <Grid ColumnDefinitions="110, 1 , *" ColumnSpacing="3">
+                        <Image Source="{Binding image}" Grid.Column="0"  WidthRequest="110"/>
+                        <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="Silver"/>
+                        <Grid RowDefinitions="Auto, * , Auto" Grid.Column="2">
+                            <!--label of title and status goes here-->
+                            <Grid  Grid.Column="0" ColumnDefinitions="*, Auto">
+                                <Label Grid.Column="0" Text="{Binding title}"  FontSize="18" FontAttributes="Bold" />
+                                <Border  Grid.Column="1" BackgroundColor="ForestGreen"  HeightRequest="25" StrokeShape="RoundRectangle 5" Padding="8,2">
+                                    <Label Text="Planned" TextColor="White" FontSize="12" ></Label>
+                                </Border>
+                            </Grid>
+                            <HorizontalStackLayout Grid.Row="1">
+                                <Image Source="location.png"/>
+                                <Label   Text="{Binding location}" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Grid.Row="2">
+                                <Image Source="calendar.png"/>
+                                <Label  Text="10-5-2024- 05-07-2025" VerticalOptions="Center"/>
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

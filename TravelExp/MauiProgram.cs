@@ -26,6 +26,7 @@ namespace TravelExp
             builder.Services.AddTransient<RegistrationViewModel>().AddTransient<RegistrationPage>();
 
             builder.Services.AddSingleton<HomeViewModel>().AddSingleton<MainPage>();
+            builder.Services.AddSingleton<TripViewModel>().AddSingleton<TripsPage>();
 
             return builder.Build();
         }
