@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="TravelExp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TravelExp"
+    xmlns:pages="clr-namespace:TravelExp.Pages"
+    Title="TravelExp"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarBackgroundColor="#5068F2"
+    Shell.TabBarForegroundColor="White"
+    Shell.TabBarTitleColor="White"
+    Shell.TabBarUnselectedColor="Silver"
+    Shell.NavBarHasShadow="True">
+
+    <ShellContent
+     Title="Login"
+     ContentTemplate="{DataTemplate pages:LoginPage}"
+     Route="LoginPage" />
+
+<TabBar>
+     <ShellContent
+     Title="Home"
+     Icon="home.png"
+     ContentTemplate="{DataTemplate pages:MainPage}"
+     Route="MainPage" />
+
+   <ShellContent
+  Title="Trips"
+  Icon="trip.png"
+  ContentTemplate="{DataTemplate pages:MainPage}"
+  Route="MainPage1" />
+
+   <ShellContent
+  Title="Add Trip"
+   Icon="plus.png"
+  ContentTemplate="{DataTemplate pages:MainPage}"
+  Route="MainPage2" />
+    
+    <ShellContent
+    Title="Settings"
+     Icon="gear.png"
+    ContentTemplate="{DataTemplate pages:MainPage}"
+    Route="MainPage3" />
+    </TabBar>
+
+</Shell>
