@@ -1,14 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:TravelExp.Models"
+             xmlns:vm="clr-namespace:TravelExp.ViewModels"
              x:Class="TravelExp.Pages.MainPage"
-             Title="Home">
-    <Grid RowDefinitions="200, Auto">
-        <Image Source="logo.jpg" WidthRequest="3000"></Image>
-
+             Title="Home"
+             x:DataType="vm:HomeViewModel"
+             BackgroundColor="White">
+    <Grid RowDefinitions="180, Auto, *">
+        <Image Source="logo.jpg"  HeightRequest="180"></Image>
         <Grid Grid.Row="1" ColumnDefinitions="Auto, * , Auto" Padding="10,0">
-            <Label Grid.Column="0" Text="Recent Trips" FontSize="20"></Label>
-            <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" MinimumWidthRequest="20" MinimumHeightRequest="20"  FontSize="12"></Button>
+            <Label Grid.Column="0" Text="Recent Trips" FontSize="19"></Label>
+            <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" 
+                    MinimumHeightRequest="18"  FontSize="12" Command="{Binding AddTripTempCommand}"></Button>
         </Grid>
+
+        <CollectionView Grid.Row="2"  ItemsSource="{Binding Trips}" Margin="10,6">
+            <CollectionView.EmptyView>
+                <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,25,0,0">
+                    <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
+                    <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"
+                            MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripTempCommand}"></Button>
+                </VerticalStackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Span="2" Orientation="Vertical" VerticalItemSpacing="15" HorizontalItemSpacing="15"></GridItemsLayout>
+            </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:TripModel">
+                    <Border StrokeShape="RoundRectangle 15" BackgroundColor="White" StrokeThickness="1" >
+                        <VerticalStackLayout>
+                            <Image Source="{Binding image}" HeightRequest="80"></Image>
+                            <Label Text="{Binding title}" Padding="8, 0" FontAttributes="Bold" TextColor="Green"></Label>
+                            <Label Text="{Binding location}" Padding="8,0" FontSize="12"></Label>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
     </Grid>
+    
 </ContentPage>

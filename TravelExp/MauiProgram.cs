@@ -19,11 +19,13 @@ namespace TravelExp
                 }).UseMauiCommunityToolkit();
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             builder.Services.AddTransient<LoginViewModel>().AddTransient<LoginPage>();
             builder.Services.AddTransient<RegistrationViewModel>().AddTransient<RegistrationPage>();
+
+            builder.Services.AddSingleton<HomeViewModel>().AddSingleton<MainPage>();
 
             return builder.Build();
         }
