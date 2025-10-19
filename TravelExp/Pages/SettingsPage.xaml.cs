@@ -1,9 +1,12 @@
+using TravelExp.ViewModels;
+
 namespace TravelExp.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-	public SettingsPage()
-	{
-		InitializeComponent();
-	}
+    public SettingsPage(SettingViewModel settingViewModel)
+    {
+        InitializeComponent();
+        BindingContext = settingViewModel;
+    }
 }

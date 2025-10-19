@@ -1,12 +1,60 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TravelExp.Models"
+             xmlns:vm="clr-namespace:TravelExp.ViewModels"
              x:Class="TravelExp.Pages.SettingsPage"
-             Title="SettingsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Settings"
+             x:DataType="vm:SettingViewModel">
+
+    <!-- ############        Initial and Name Section      ############-->
+    <Grid  RowDefinitions="Auto, * , Auto, Auto" Padding="15" RowSpacing="20">
+        <VerticalStackLayout Grid.Row="0">
+            <Border  BackgroundColor="#5068F2" HeightRequest="80" WidthRequest="80" StrokeShape="RoundRectangle 40" StrokeThickness="5" >
+                <Label Text="{Binding Initial}" TextColor="White" FontSize="45" HorizontalOptions="Center" FontAttributes="Bold"></Label>
+            </Border>
+            <Label  Text="{Binding Name}" HorizontalOptions="Center"  FontSize="18" TextColor="ForestGreen"></Label>
+        </VerticalStackLayout>
+        
+        <!-- ############        Edit Section      ############-->
+        <Border Grid.Row="1" StrokeShape="RoundRectangle 15" BackgroundColor="LightGray" Padding="15"  VerticalOptions="Start">
+
+            <VerticalStackLayout   VerticalOptions="Start" >
+                <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
+                    <Image Grid.Column="0" Source="pencil.png" ></Image>
+                    <Label Grid.Column="1" Text="Edit name"></Label>
+                    <Image Grid.Column="2" Source="arrow.png"></Image>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                </Grid>
+
+                <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
+                    <Image Grid.Column="0" Source="lock.png" ></Image>
+                    <Label Grid.Column="1" Text="Change password"></Label>
+                    <Image Grid.Column="2" Source="arrow.png"></Image>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                </Grid>
+
+                <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
+                    <Image Grid.Column="0" Source="dollar.png" ></Image>
+                    <Label Grid.Column="1" Text="Manage Expance Categories"></Label>
+                    <Image Grid.Column="2" Source="arrow.png"></Image>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                </Grid>
+
+            </VerticalStackLayout>
+        </Border>
+        <!--############     End of Edit Section     ##########-->
+
+        <!-- ############        Logout Section      ############-->
+        <Button Grid.Row="2" Text="Logot" HorizontalOptions="Center" BackgroundColor="#E68470" FontSize="14" ></Button>
+
+        <Border Grid.Row="3"  StrokeShape="10" BackgroundColor="Transparent" StrokeThickness="0">
+            <Grid ColumnDefinitions="*, *">
+                <Label  Grid.Column="0" Text="Developed by Abhishek" TextColor="Silver"  FontSize="11" HorizontalOptions="Start"></Label>
+                <Label  Grid.Column="1" Text="Version 1.0" TextColor="Silver"  FontSize="11" HorizontalOptions="End"></Label>
+            </Grid>
+        </Border>
+
+       
+    </Grid>
 </ContentPage>
