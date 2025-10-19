@@ -22,23 +22,23 @@
             <VerticalStackLayout   VerticalOptions="Start" >
                 <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
                     <Image Grid.Column="0" Source="pencil.png" ></Image>
-                    <Label Grid.Column="1" Text="Edit name"></Label>
+                    <Label Grid.Column="1" Text="Edit Name"></Label>
                     <Image Grid.Column="2" Source="arrow.png"></Image>
-                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.8" Color="Silver"></BoxView>
                 </Grid>
 
                 <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
                     <Image Grid.Column="0" Source="lock.png" ></Image>
-                    <Label Grid.Column="1" Text="Change password"></Label>
+                    <Label Grid.Column="1" Text="Change Password"></Label>
                     <Image Grid.Column="2" Source="arrow.png"></Image>
-                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.8" Color="Silver"></BoxView>
                 </Grid>
 
                 <Grid RowDefinitions="Auto, 1"  ColumnDefinitions="20 , * , 20" ColumnSpacing="4" Padding="10" RowSpacing="5">
                     <Image Grid.Column="0" Source="dollar.png" ></Image>
-                    <Label Grid.Column="1" Text="Manage Expance Categories"></Label>
+                    <Label Grid.Column="1" Text="Manage Expence Categories"></Label>
                     <Image Grid.Column="2" Source="arrow.png"></Image>
-                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.5" Color="Silver"></BoxView>
+                    <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.8" Color="Silver"></BoxView>
                 </Grid>
 
             </VerticalStackLayout>

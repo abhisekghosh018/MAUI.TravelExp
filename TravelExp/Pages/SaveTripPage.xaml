@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TravelExp.Models"
+             xmlns:vm="clr-namespace:TravelExp.ViewModels"
+             x:Class="TravelExp.Pages.SaveTripPage"
+             Title="Add Trips"
+             x:DataType="vm:SaveTripViewModel">
+
+
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="10">
+            <Label Text="Category"></Label>
+            <!-- ###################################              Category-->
+            <VerticalStackLayout>
+                <CollectionView ItemsSource="{Binding Categories}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:CategoryModel">
+                            <Border StrokeShape="RoundRectangle 4" Padding="5">
+                                <VerticalStackLayout Spacing="5">
+                                    <Image Source="{Binding Image}" HeightRequest="30"></Image>
+                                    <Label Text="{Binding Name}" HorizontalOptions="Center"></Label>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+            </VerticalStackLayout>
+
+            <!-- ###################################     End Of Category-->
+            <VerticalStackLayout>
+                <Label Text="Trip Name"></Label>
+                <Entry Placeholder="Trip title"></Entry>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Location (City/State/Country)"></Label>
+                <Entry Placeholder="Trip Location"></Entry>
+            </VerticalStackLayout>
+
+            <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+                <VerticalStackLayout Grid.Column="0">
+                    <Label Text="Start Date"></Label>
+                    <DatePicker></DatePicker>
+
+                </VerticalStackLayout>
+                <VerticalStackLayout Grid.Column="1">
+                    <Label Text="End Date"></Label>
+                    <DatePicker></DatePicker>
+                </VerticalStackLayout>
+            </Grid>
+
+            <VerticalStackLayout>
+                <Label Text="Status"></Label>
+                <Picker ItemsSource="{Binding Status}" Title="Select an item" ></Picker>
+            </VerticalStackLayout>
+
+            <Button Text="Save Trip"></Button>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

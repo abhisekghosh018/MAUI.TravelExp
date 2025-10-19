@@ -34,8 +34,8 @@
    <ShellContent
   Title="Add Trip"
    Icon="plus.png"
-  ContentTemplate="{DataTemplate pages:MainPage}"
-  Route="MainPage2" />
+  ContentTemplate="{DataTemplate pages:SaveTripPage}"
+  Route="SaveTripPage" />
     
     <ShellContent
     Title="Settings"
