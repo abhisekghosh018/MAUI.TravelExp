@@ -11,7 +11,7 @@
     <ScrollView>
         <VerticalStackLayout Padding="15" Spacing="10">
             <Label Text="Category"></Label>
-            <!-- ###################################              Category-->
+            <!-- ################################### Category-->
             <VerticalStackLayout>
                 <CollectionView ItemsSource="{Binding Categories}">
                     <CollectionView.ItemsLayout>

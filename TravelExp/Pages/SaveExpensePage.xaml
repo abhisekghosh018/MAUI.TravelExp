@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TravelExp.Pages.SaveExpensePage"
+             Shell.PresentationMode="ModalAnimated"
+             xmlns:model="clr-namespace:TravelExp.Models"
+             xmlns:vm="clr-namespace:TravelExp.ViewModels"            
+             x:DataType="vm:SaveExpenseViewModel">
+
+
+    <Grid RowDefinitions="Auto, *" Padding="15" RowSpacing="25">
+        <VerticalStackLayout HorizontalOptions="Center">
+            <ImageButton Grid.Row="0"
+                         Grid.Column="0" 
+                         Source="x.png"                                                 
+                         HeightRequest="15"
+                         WidthRequest="15"
+                         MinimumHeightRequest="30"
+                         MinimumWidthRequest="30" Command="{Binding GoBackCommand}"/>
+            <Label Text="Save Expenses" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold"></Label>
+        </VerticalStackLayout>
+      <!--Form-->
+        <VerticalStackLayout Grid.Row="1">
+            
+            <VerticalStackLayout>
+                <Label Text="Title"></Label>
+                <Entry Placeholder="Ex: Food"></Entry>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout>
+                <Label Text="Amount"></Label>
+                <Entry Placeholder="Ex: 1500.00 "></Entry>
+            </VerticalStackLayout>
+            <VerticalStackLayout>
+                <Label Text="Category"></Label>
+                <Picker ItemsSource="{Binding}" Title="Select an item" ></Picker>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="0">
+                <Label Text="When"></Label>
+                <DatePicker></DatePicker>
+            </VerticalStackLayout>
+
+            <Button Text="Save Expense"></Button>
+        </VerticalStackLayout>
+        
+    </Grid>
+    
+    
+</ContentPage>

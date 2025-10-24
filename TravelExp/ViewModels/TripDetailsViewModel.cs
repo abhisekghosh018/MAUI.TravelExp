@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 using TravelExp.Models;
+using TravelExp.Pages;
 
 namespace TravelExp.ViewModels
 {
@@ -18,13 +19,15 @@ namespace TravelExp.ViewModels
 
 
         [RelayCommand]
-        private void AddExpense()
+        private async Task AddExpense()
         {
             Expenses.Add(new ExpenseModel(1, "Flight Tickets", "Tickets", 1500, DateTime.Today));
             Expenses.Add(new ExpenseModel(2, "Breakfast", "Food", 350, DateTime.Today));
             Expenses.Add(new ExpenseModel(2, "Bought colth", "Shopping", 350, DateTime.Today));
 
             TotalExpenses = Expenses.Sum(sum => sum.Amount);
+
+            await Shell.Current.GoToAsync(nameof(SaveExpensePage));
         }
 
     }
