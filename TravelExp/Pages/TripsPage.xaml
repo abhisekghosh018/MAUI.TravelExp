@@ -9,7 +9,7 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="plus.png" Command="{Binding AddTripTempCommand}"></ToolbarItem>
     </ContentPage.ToolbarItems>
-    
+
     <CollectionView ItemsSource="{Binding Trips}" Margin="15">
         <CollectionView.EmptyView>
             <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,300,0,0">
@@ -22,7 +22,7 @@
             <!--To maintain the gap between the items-->
             <LinearItemsLayout ItemSpacing="15" Orientation="Vertical"></LinearItemsLayout>
         </CollectionView.ItemsLayout>
-        
+
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:TripModel">
                 <Border BackgroundColor="White" StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="10" >
@@ -48,6 +48,11 @@
                             </HorizontalStackLayout>
                         </Grid>
                     </Grid>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer 
+              Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TripViewModel}},
+              Path= GoToTripDetailsPageCommand}" CommandParameter="{Binding id}"/>
+                    </Border.GestureRecognizers>
                 </Border>
             </DataTemplate>
         </CollectionView.ItemTemplate>

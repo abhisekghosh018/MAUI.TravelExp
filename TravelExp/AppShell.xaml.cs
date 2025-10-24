@@ -9,7 +9,7 @@ namespace TravelExp
             InitializeComponent();
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
             Routing.RegisterRoute(nameof(ExpenseCategoryPage), typeof(ExpenseCategoryPage));
-
+            Routing.RegisterRoute(nameof(TripDetailsPage), typeof(TripDetailsPage));
         }
     }
 }

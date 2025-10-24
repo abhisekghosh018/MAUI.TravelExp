@@ -31,6 +31,7 @@ namespace TravelExp
             builder.Services.AddTransient<SettingViewModel>().AddTransient<SettingsPage>();
             builder.Services.AddTransient<SaveTripViewModel>().AddTransient<SaveTripPage>();
             builder.Services.AddTransient<ExpenseCategoryViewModel>().AddTransient<ExpenseCategoryPage>();
+            builder.Services.AddTransient<TripDetailsViewModel>().AddTransient<TripDetailsPage>();
 
             return builder.Build();
         }
