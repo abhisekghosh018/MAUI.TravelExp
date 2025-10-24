@@ -26,9 +26,11 @@ namespace TravelExp
             builder.Services.AddTransient<RegistrationViewModel>().AddTransient<RegistrationPage>();
 
             builder.Services.AddSingleton<HomeViewModel>().AddSingleton<MainPage>();
-            builder.Services.AddSingleton<TripViewModel>().AddSingleton<TripsPage>();
-            builder.Services.AddSingleton<SettingViewModel>().AddSingleton<SettingsPage>();
-            builder.Services.AddSingleton<SaveTripViewModel>().AddSingleton<SaveTripPage>();
+
+            builder.Services.AddTransient<TripViewModel>().AddTransient<TripsPage>();
+            builder.Services.AddTransient<SettingViewModel>().AddTransient<SettingsPage>();
+            builder.Services.AddTransient<SaveTripViewModel>().AddTransient<SaveTripPage>();
+            builder.Services.AddTransient<ExpenseCategoryViewModel>().AddTransient<ExpenseCategoryPage>();
 
             return builder.Build();
         }

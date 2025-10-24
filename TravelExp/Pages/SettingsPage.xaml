@@ -39,8 +39,13 @@
                     <Label Grid.Column="1" Text="Manage Expence Categories"></Label>
                     <Image Grid.Column="2" Source="arrow.png"></Image>
                     <BoxView  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" HeightRequest="0.8" Color="Silver"></BoxView>
-                </Grid>
 
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToExpenseCategoryCommand}"/>
+                    </Grid.GestureRecognizers>
+                    
+                </Grid>
+                
             </VerticalStackLayout>
         </Border>
         <!--############     End of Edit Section     ##########-->
