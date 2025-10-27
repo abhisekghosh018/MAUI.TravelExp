@@ -20,28 +20,33 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <Grid RowDefinitions="Auto, Auto , Auto,*" RowSpacing="15">
 
-        <VerticalStackLayout Grid.Row="0" HorizontalOptions="Center" Margin="0,50,0,0">
-            <Image Source="logo.jpg" HeightRequest="100" WidthRequest="100"></Image>
-            
-            <Label Text="Travel-Exp-Tracker " Style="{StaticResource appName}"></Label>
-            
-        </VerticalStackLayout>
-        <Label Grid.Row="2" HorizontalOptions="Center" Text="Login" FontAttributes="Bold" TextColor="Orange" FontSize="20" Margin="0,35,0,0"></Label>
+    <Grid>
+        <Grid RowDefinitions="Auto, Auto , Auto,*" RowSpacing="15">
 
-        <VerticalStackLayout Grid.Row="2" Spacing="10" Padding="20" Margin="0,65,0,0">
-            <Entry Placeholder="Email"></Entry>
-            <Entry Placeholder="Password" IsPassword="True"></Entry>
-            <Button Text="Login" FontAttributes="Bold"  Command="{Binding LoginCommand}"></Button>
-            <Label Text="Don't have an account? Register" HorizontalOptions="Center"
-                   Style="{StaticResource welcomeText}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
-                </Label.GestureRecognizers>
-            </Label>
-            
-        </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="0" HorizontalOptions="Center" Margin="0,50,0,0">
+                <Image Source="logo.jpg" HeightRequest="100" WidthRequest="100"></Image>
 
+                <Label Text="Travel-Exp-Tracker " Style="{StaticResource appName}"></Label>
+
+            </VerticalStackLayout>
+            <Label Grid.Row="2" HorizontalOptions="Center" Text="Login" FontAttributes="Bold" TextColor="Orange" FontSize="20" Margin="0,35,0,0"></Label>
+
+            <VerticalStackLayout Grid.Row="2" Spacing="10" Padding="20" Margin="0,65,0,0">
+                <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
+                <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True"></Entry>
+                <Button Text="Login" FontAttributes="Bold"  Command="{Binding LoginCommand}"></Button>
+                <Label Text="Don't have an account? Register" HorizontalOptions="Center"
+               Style="{StaticResource welcomeText}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToRegisterCommand}"/>
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </VerticalStackLayout>
+
+        </Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center" Color="Green"/>
     </Grid>
+    
 </ContentPage>
