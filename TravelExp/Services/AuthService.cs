@@ -10,10 +10,15 @@ public class AuthService
         JwtToken = token;
         Preferences.Default.Set(TokenKey, token);
     }
-
     public void RemoveToken()
     {
         JwtToken = null;
         Preferences.Default.Remove(TokenKey);
     }
+    public void LoadToken()
+    {
+        JwtToken = Preferences.Default.Get<string>(TokenKey, null);
+    }
+    public bool HasValidToken => !string.IsNullOrEmpty(JwtToken);
+
 }

@@ -3,48 +3,56 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:TravelExp.Models"
              xmlns:vm="clr-namespace:TravelExp.ViewModels"
+              xmlns:dto="clr-namespace:TravelExp.DTOs"
              x:Class="TravelExp.Pages.MainPage"
              Title="Home"
              x:DataType="vm:HomeViewModel"
-             BackgroundColor="White">
-    <Grid RowDefinitions="180, Auto, *">
-        <Image Source="logo.jpg"  HeightRequest="180"></Image>
-        <Grid Grid.Row="1" ColumnDefinitions="Auto, * , Auto" Padding="10,0">
-            <Label Grid.Column="0" Text="Recent Trips" FontSize="19"></Label>
-            <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"  BackgroundColor="ForestGreen"
-                    MinimumHeightRequest="18"  FontSize="12" Command="{Binding AddTripTempCommand}"></Button>
-        </Grid>
+             >
 
-        <CollectionView Grid.Row="2"  ItemsSource="{Binding Trips}" Margin="15">
-            <CollectionView.EmptyView>
-                <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,25,0,0">
-                    <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
-                    <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" BackgroundColor="ForestGreen"
-                            MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripTempCommand}"></Button>
-                </VerticalStackLayout>
-            </CollectionView.EmptyView>
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Span="2" Orientation="Vertical" VerticalItemSpacing="15" HorizontalItemSpacing="15"></GridItemsLayout>
-            </CollectionView.ItemsLayout>
-        <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:TripModel">
-                    <Border StrokeShape="RoundRectangle 15"  StrokeThickness="1" >
-                        <VerticalStackLayout>
-                            <Image Source="{Binding image}" HeightRequest="75"></Image>
-                            <Label Text="{Binding title}" Padding="10, 0" HorizontalOptions="Center" TextColor="ForestGreen"></Label>
-                            <Image Source="location.png" HeightRequest="20"></Image>
-                            <Label Text="{Binding location}" HorizontalOptions="Center" Padding="0,5" FontSize="10"></Label>
-                        </VerticalStackLayout>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}},
-                                Path= GoToTripDetailsPageCommand}" CommandParameter="{Binding id}"/>
-                        </Border.GestureRecognizers>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-        
+    <Grid>
+        <Grid RowDefinitions="180, Auto, *">
+            <Image Source="logo.jpg"  HeightRequest="180"></Image>
+            <Grid Grid.Row="1" ColumnDefinitions="Auto, * , Auto" Padding="10,0">
+                <Label Grid.Column="0" Text="Recent Trips"  FontSize="19"></Label>
+                <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"  BackgroundColor="ForestGreen"
+                MinimumHeightRequest="18"  FontSize="12" Command="{Binding AddTripCommand}"></Button>
+            </Grid>
+
+            <CollectionView Grid.Row="2"  ItemsSource="{Binding Trips}" Margin="15">
+                <CollectionView.EmptyView>
+                    <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,25,0,0">
+                        <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
+                        <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" BackgroundColor="ForestGreen"
+                        MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripCommand}"></Button>
+                    </VerticalStackLayout>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="2" Orientation="Vertical" VerticalItemSpacing="15" HorizontalItemSpacing="15"></GridItemsLayout>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="dto:TripListDto">
+                        <Border StrokeShape="RoundRectangle 15"  StrokeThickness="1" Padding="3">
+                            <VerticalStackLayout>
+                                <Image Source="{Binding Image}" HeightRequest="75"></Image>
+                                <Label Text="{Binding Title}" FontSize="12" Padding="10, 0" HorizontalOptions="Center" TextColor="ForestGreen"></Label>
+                                <Image Source="location.png" HeightRequest="20"></Image>
+                                <Label Text="{Binding Location}" HorizontalOptions="Center" Padding="0,5" FontSize="10"></Label>
+                            </VerticalStackLayout>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}},
+                            Path= GoToTripDetailsPageCommand}" CommandParameter="{Binding Id}"/>
+                            </Border.GestureRecognizers>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </Grid>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center" Color="Green"/>
     </Grid>
+    
+    
     
 </ContentPage>

@@ -41,7 +41,9 @@ public static class MauiProgram
 
         ConfigureRefit(builder.Services);
 
-        return builder.Build();
+        var app = builder.Build();
+        ServiceHelper.Services = app.Services;
+        return app;
     }
 
     private static void ConfigureRefit(IServiceCollection services)

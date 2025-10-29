@@ -14,7 +14,7 @@
         <CollectionView.EmptyView>
             <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,300,0,0">
                 <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
-                <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"
+                <Button Grid.Column="2"  VerticalOptions="Start" BackgroundColor="ForestGreen" Text="Add"
               MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripTempCommand}"></Button>
             </VerticalStackLayout>
         </CollectionView.EmptyView>

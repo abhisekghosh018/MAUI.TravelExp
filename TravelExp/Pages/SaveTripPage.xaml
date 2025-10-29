@@ -7,77 +7,83 @@
              Title="Add Trips"
              x:DataType="vm:SaveTripViewModel">
 
+    <Grid>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="15" Spacing="10">
-            <Label Text="Category"></Label>
-            <!-- ################################### Category-->
-            <VerticalStackLayout>
-                <CollectionView ItemsSource="{Binding Categories}">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
-                    </CollectionView.ItemsLayout>
+        <ScrollView>
+            <VerticalStackLayout Padding="15" Spacing="10">
+                <Label Text="Category"></Label>
+                <!-- ################################### Category-->
+                <VerticalStackLayout>
+                    <CollectionView ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+                        </CollectionView.ItemsLayout>
 
-                    <CollectionView.ItemTemplate>
-                        
-                        <DataTemplate x:DataType="model:CategoryModel">
-                            <Border StrokeShape="RoundRectangle 4" Padding="5">
-                                <VerticalStackLayout Spacing="5">
-                                    <Image Source="{Binding Image}" HeightRequest="30"></Image>
-                                    <Label Text="{Binding Name}" HorizontalOptions="Center"></Label>
-                                </VerticalStackLayout>
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SaveTripViewModel}},
-                                        Path=SetSelectedCategoryCommand} " CommandParameter="{Binding .}"/>
-                                </Border.GestureRecognizers>
+                        <CollectionView.ItemTemplate>
 
-                                <Border.Triggers>
-                                    <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
-                                        
-                                        <Setter Property="Stroke" Value="ForestGreen" />
-                                    </DataTrigger>
-                                </Border.Triggers>
-                                
-                            </Border>
-                            
-                            
-                            
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="model:CategoryModel">
+                                <Border StrokeShape="RoundRectangle 4" Padding="5">
+                                    <VerticalStackLayout Spacing="5">
+                                        <Image Source="{Binding Image}" HeightRequest="30"></Image>
+                                        <Label Text="{Binding Name}" HorizontalOptions="Center"></Label>
+                                    </VerticalStackLayout>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:SaveTripViewModel}},
+                                    Path=SetSelectedCategoryCommand} " CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
 
-                </CollectionView>
-            </VerticalStackLayout>
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding IsSelected}" Value="True">
 
-            <!-- ###################################     End Of Category-->
-            <VerticalStackLayout>
-                <Label Text="Trip Name"/>
-                <Entry Text="{Binding Model.Title}" Placeholder="Trip title"/>
-            </VerticalStackLayout>
+                                            <Setter Property="Stroke" Value="ForestGreen" />
+                                        </DataTrigger>
+                                    </Border.Triggers>
 
-            <VerticalStackLayout>
-                <Label Text="Location (City/State/Country)"/>
-                <Entry Text="{Binding Model.Location}" Placeholder="Trip Location"/>
-            </VerticalStackLayout>
+                                </Border>
 
-            <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
-                <VerticalStackLayout Grid.Column="0">
-                    <Label Text="Start Date"/>
-                    <DatePicker Date="{Binding Model.StartDate}"/>
 
+
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
                 </VerticalStackLayout>
-                <VerticalStackLayout Grid.Column="1">
-                    <Label Text="End Date"/>
-                    <DatePicker Date="{Binding Model.EndDate}"/>
+
+                <!-- ###################################     End Of Category-->
+                
+                <VerticalStackLayout>
+                    <Label Text="Trip Name"/>
+                    <Entry Text="{Binding Model.Title}" Placeholder="Trip title"/>
                 </VerticalStackLayout>
-            </Grid>
 
-            <VerticalStackLayout>
-                <Label Text="Status"/>
-                <Picker ItemsSource="{Binding Status}" SelectedItem="{Binding Model.Status}" Title="Select an item" />
+                <VerticalStackLayout>
+                    <Label Text="Location (City/State/Country)"/>
+                    <Entry Text="{Binding Model.Location}" Placeholder="Trip Location"/>
+                </VerticalStackLayout>
+
+                <Grid ColumnDefinitions="*, *" ColumnSpacing="5">
+                    <VerticalStackLayout Grid.Column="0">
+                        <Label Text="Start Date"/>
+                        <DatePicker Date="{Binding Model.StartDate}"/>
+
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="End Date"/>
+                        <DatePicker Date="{Binding Model.EndDate}"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <VerticalStackLayout>
+                    <Label Text="Status"/>
+                    <Picker ItemsSource="{Binding Status}" SelectedItem="{Binding Model.Status}" Title="Select an item" />
+                </VerticalStackLayout>
+
+                <Button Text="Save Trip" BackgroundColor="ForestGreen" Command="{Binding SaveTripCommand}"></Button>
+
             </VerticalStackLayout>
+        </ScrollView>
+        <ActivityIndicator IsRunning="{Binding IsBusy}" HorizontalOptions="Center" Color="Green"/>
+    </Grid>
 
-            <Button Text="Save Trip" BackgroundColor="ForestGreen"></Button>
-
-        </VerticalStackLayout>
-    </ScrollView>
+    
 </ContentPage>

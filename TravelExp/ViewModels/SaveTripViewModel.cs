@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using TravelExp.Apis;
 using TravelExp.Enums;
 using TravelExp.Models;
+using TravelExp.Pages;
 
 namespace TravelExp.ViewModels;
 
@@ -61,6 +62,31 @@ public partial class SaveTripViewModel : BaseViewModel
         var temp = Categories;
         Categories = null;
         Categories = temp;
+    }
+
+    [RelayCommand]
+    private async Task SaveTripAsync()
+    {
+        var (isValid, error) = Model.Validate();
+
+        if (!isValid)
+        {
+            await ErrorAlertAsync(error);
+            return;
+        }
+
+        await MakeApiCall(async () =>
+        {
+            var result = await _tripsApi.SaveTripAsync(Model.ToDto());
+
+            if (!result.IsSuccess)
+            {
+                await ErrorAlertAsync(result.Error);
+                return;
+            }
+            await ToastAsync("A New trip successfully added.");
+            await Shell.Current.GoToAsync($"///{nameof(MainPage)}");
+        });
     }
 }
 

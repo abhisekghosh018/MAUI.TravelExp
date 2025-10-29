@@ -1,23 +1,27 @@
-﻿
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.Collections.ObjectModel;
-using TravelExp.Models;
+using TravelExp.Apis;
+using TravelExp.DTOs;
 using TravelExp.Pages;
 
 namespace TravelExp.ViewModels;
 
-public partial class HomeViewModel : ObservableObject
+public partial class HomeViewModel : BaseViewModel
 {
-    public ObservableCollection<TripModel> Trips { get; set; } = [];
+    private readonly ITripsApi _trips;
+
+    public HomeViewModel(ITripsApi trips)
+    {
+        _trips = trips;
+    }
+
+    [ObservableProperty]
+    public TripListDto[] trips = [];
 
     [RelayCommand]
-    private void AddTripTemp()
+    private async Task AddTripAsync()
     {
-        Trips.Add(new TripModel(1, "logo.jpg", "Sunny Beach", "California"));
-        Trips.Add(new TripModel(2, "logo.jpg", "Dreamy Beach", "Newzeland"));
-        Trips.Add(new TripModel(3, "logo.jpg", "Zoho Beach", "Mumbai"));
-        Trips.Add(new TripModel(4, "logo.jpg", "Himalaya", "Nepal"));
+        await Shell.Current.GoToAsync($"///{nameof(SaveTripPage)}");
     }
 
     [RelayCommand]
@@ -25,6 +29,15 @@ public partial class HomeViewModel : ObservableObject
     private async Task GoToTripDetailsPageAsync(int tripId)
     {
         await Shell.Current.GoToAsync(nameof(TripDetailsPage));
+    }
+
+
+    public async Task fetchTripsAsync()
+    {
+        await MakeApiCall(async () =>
+        {
+            Trips = await _trips.GetUserTripsAsync(count: 6);
+        });
     }
 
 }
