@@ -41,7 +41,7 @@
                 <DatePicker></DatePicker>
             </VerticalStackLayout>
 
-            <Button Text="Save Expense"></Button>
+            <Button Text="Save Expense" BackgroundColor="ForestGreen"/>
         </VerticalStackLayout>
         
     </Grid>

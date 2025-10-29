@@ -25,7 +25,7 @@
 
         <CollectionView.ItemTemplate>
             <DataTemplate x:DataType="model:TripModel">
-                <Border BackgroundColor="White" StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="10" >
+                <Border StrokeShape="RoundRectangle 16" StrokeThickness="1" Padding="10" >
                     <!--Text items goes here-->
                     <Grid ColumnDefinitions="110, 1 , *" ColumnSpacing="3">
                         <Image Source="{Binding image}" Grid.Column="0"  WidthRequest="110"/>
@@ -33,9 +33,9 @@
                         <Grid RowDefinitions="Auto, * , Auto" Grid.Column="2">
                             <!--label of title and status goes here-->
                             <Grid  Grid.Column="0" ColumnDefinitions="*, Auto">
-                                <Label Grid.Column="0" Text="{Binding title}"  FontSize="18" FontAttributes="Bold" />
-                                <Border  Grid.Column="1" BackgroundColor="ForestGreen"  HeightRequest="25" StrokeShape="RoundRectangle 5" Padding="8,2">
-                                    <Label Text="Planned" TextColor="White" FontSize="12" ></Label>
+                                <Label Grid.Column="0" Text="{Binding title}"  FontSize="16" />
+                                <Border  Grid.Column="1" BackgroundColor="LightCoral"  HeightRequest="25" StrokeShape="RoundRectangle 4" Padding="5,5">
+                                    <Label Text="Cancelled" TextColor="White" FontSize="10" ></Label>
                                 </Border>
                             </Grid>
                             <HorizontalStackLayout Grid.Row="1">

@@ -23,8 +23,8 @@
         <Grid RowDefinitions="Auto, Auto , Auto,*" RowSpacing="15">
 
             <VerticalStackLayout Grid.Row="0" HorizontalOptions="Center" Margin="0,50,0,0">
-                <Image Source="logo.jpg" HeightRequest="100" WidthRequest="100"></Image>
-                <Label Text="Travel-Exp-Tracker " Style="{StaticResource appName}"></Label>
+                <Image Source="logo.png" HeightRequest="100" WidthRequest="100"></Image>
+                
             </VerticalStackLayout>
             <Label Grid.Row="2" HorizontalOptions="Center" Text="Register" FontAttributes="Bold" TextColor="Orange" FontSize="20" Margin="0,35,0,0"></Label>
 
@@ -32,7 +32,7 @@
                 <Entry Placeholder="Name" Text="{Binding Name}"></Entry>
                 <Entry Placeholder="Email" Text="{Binding Email}"></Entry>
                 <Entry Placeholder="Password" Text="{Binding Password}" IsPassword="True"></Entry>
-                <Button Text="Register" FontAttributes="Bold" Command="{Binding RegisterCommand}"></Button>
+                <Button Text="Register" BackgroundColor="ForestGreen" FontAttributes="Bold" Command="{Binding RegisterCommand}"></Button>
                 <Label Text="Already have an account? Login" HorizontalOptions="Center"
             Style="{StaticResource welcomeText}">
                     <Label.GestureRecognizers>

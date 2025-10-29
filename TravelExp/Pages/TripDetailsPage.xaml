@@ -4,7 +4,7 @@
              x:Class="TravelExp.Pages.TripDetailsPage"
              xmlns:model="clr-namespace:TravelExp.Models"
              xmlns:vm="clr-namespace:TravelExp.ViewModels"
-             Title="{Binding TripInfo.Title}"
+             Title="Trip Details"
              x:DataType="vm:TripDetailsViewModel">
 
     <ContentPage.ToolbarItems>
@@ -42,7 +42,7 @@
             <VerticalStackLayout Grid.Row="2" Padding="15">
             <Grid ColumnDefinitions="*, Auto">
                 <Label Grid.Column="0" Text="Expenses" FontSize="18"></Label>
-                <Button Grid.Column="1"  VerticalOptions="Start" Text="Add Expenses" 
+                <Button Grid.Column="1"  VerticalOptions="Start" Text="Add Expenses" BackgroundColor="ForestGreen"
              MinimumHeightRequest="15"  FontSize="12" Command="{Binding AddExpenseCommand}"/>
             </Grid>
             </VerticalStackLayout>

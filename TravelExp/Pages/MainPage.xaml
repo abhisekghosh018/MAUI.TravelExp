@@ -11,15 +11,15 @@
         <Image Source="logo.jpg"  HeightRequest="180"></Image>
         <Grid Grid.Row="1" ColumnDefinitions="Auto, * , Auto" Padding="10,0">
             <Label Grid.Column="0" Text="Recent Trips" FontSize="19"></Label>
-            <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" 
+            <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"  BackgroundColor="ForestGreen"
                     MinimumHeightRequest="18"  FontSize="12" Command="{Binding AddTripTempCommand}"></Button>
         </Grid>
 
-        <CollectionView Grid.Row="2"  ItemsSource="{Binding Trips}" Margin="10,6">
+        <CollectionView Grid.Row="2"  ItemsSource="{Binding Trips}" Margin="15">
             <CollectionView.EmptyView>
                 <VerticalStackLayout HorizontalOptions="Center" Padding="20" Margin="0,25,0,0">
                     <Label Text="No data found" TextColor="silver" FontSize="16"></Label>
-                    <Button Grid.Column="2"  VerticalOptions="Start" Text="Add"
+                    <Button Grid.Column="2"  VerticalOptions="Start" Text="Add" BackgroundColor="ForestGreen"
                             MinimumHeightRequest="18"  FontSize="12" HorizontalOptions="Center" Command="{Binding AddTripTempCommand}"></Button>
                 </VerticalStackLayout>
             </CollectionView.EmptyView>
@@ -28,11 +28,12 @@
             </CollectionView.ItemsLayout>
         <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="models:TripModel">
-                    <Border StrokeShape="RoundRectangle 15" BackgroundColor="White" StrokeThickness="1" >
+                    <Border StrokeShape="RoundRectangle 15"  StrokeThickness="1" >
                         <VerticalStackLayout>
-                            <Image Source="{Binding image}" HeightRequest="80"></Image>
-                            <Label Text="{Binding title}" Padding="8, 0" FontAttributes="Bold" TextColor="Green"></Label>
-                            <Label Text="{Binding location}" Padding="8,0" FontSize="12"></Label>
+                            <Image Source="{Binding image}" HeightRequest="75"></Image>
+                            <Label Text="{Binding title}" Padding="10, 0" HorizontalOptions="Center" TextColor="ForestGreen"></Label>
+                            <Image Source="location.png" HeightRequest="20"></Image>
+                            <Label Text="{Binding location}" HorizontalOptions="Center" Padding="0,5" FontSize="10"></Label>
                         </VerticalStackLayout>
                         <Border.GestureRecognizers>
                             <TapGestureRecognizer 
